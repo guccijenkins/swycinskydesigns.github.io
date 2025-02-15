@@ -203,7 +203,7 @@
             
               <button class="w-100 btn btn-danger btn-lg clearButton" onclick="clearCart()">Clear Cart</button>
 
-      </div>
+<!--       </div>
       <div class="col-md-7 col-lg-8">
         <h4 class="mb-3">Billing address</h4>
         <form class="needs-validation" novalidate>
@@ -386,11 +386,11 @@
             </div>
           </div>
 
-          <hr class="my-4">
+          <hr class="my-4"> -->
 
           <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
-        </form>
-      </div>
+<!--         </form>
+      </div> -->
     </div>
   </main>
 
@@ -450,6 +450,7 @@
       let productNameOutput = document.getElementById('productName');
       let productDescOutput = document.getElementById('productDescription');
       let productPriceOutput = document.getElementById('productPrice');
+      let thumbNailImage = document.getElementById('productImage')
       let totalPrice = document.getElementById('totalPrice');
 
 
@@ -459,7 +460,7 @@
       cartItems.forEach(item => {
 
           let li = document.createElement("li");
-          li.className = "list-group-item d-flex justify-content-between lh-sm";
+          li.className = "list-group-item d-flex justify-content-between align-items-center";
 
           let div = document.createElement('div')
 
@@ -484,9 +485,24 @@
           span.innerText = "$" + itemPrice
           priceSum += itemPrice
 
+          let inputQuantity = document.createElement('input')
+          inputQuantity.className = "inputQuantity"
+          inputQuantity.id = "inputQuantity"
+          inputQuantity.style = "width: 69px; text-align: center; float: right;"
+          inputQuantity.type = "number"
+          inputQuantity.labels = "Quantity"
+          inputQuantity.min = 1
+
+          let quantityText = document.createElement('text')
+          quantityText.innerText = "Quantity\n\n"
+          quantityText.style = "font-weight: bold; align: center;"
+
           li.appendChild(div)
           div.appendChild(h6)
           div.appendChild(small)
+          li.appendChild(thumbNail)
+          li.appendChild(quantityText)
+          quantityText.appendChild(inputQuantity)
           li.appendChild(span)
       
           listItem.appendChild(li)
@@ -511,6 +527,7 @@
         let outputPrice = document.getElementById('productPrice');
         let output = document.getElementById('count_of_items');
         let sumPrice = document.getElementById('totalPrice');
+        let outputThumbNail = document.getElementById('productImage')
         
         if (outputText) outputText.innerText = "No Items in Cart"; // Clear UI name
         if (outputDesc) outputDesc.innerText = "No Items in Cart"; // Clear UI description
