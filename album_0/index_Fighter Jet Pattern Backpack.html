@@ -353,7 +353,7 @@
     
   }
 
-  function cartItems(name, description, price) {
+  function cartItems(name, description, price, image) {
       let storedItems = JSON.parse(localStorage.getItem('cartItems')) ?? [];
 
     // Filter out empty arrays and undefined entries
