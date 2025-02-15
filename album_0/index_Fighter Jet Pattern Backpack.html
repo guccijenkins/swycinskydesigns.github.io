@@ -334,8 +334,10 @@
               let productDesc = product.querySelector(".productDescription").innerText;
               let productPrice = product.querySelector(".productPrice").innerText.trim();;
               let priceNumber = parseFloat(productPrice.replace(/\$/g, '').trim());
+
+              let productImage = "https:\/\/images-api.printify.com\/mockup\/67952071eb7c93b082025ccf\/61364\/2984\/fighter-jet-pattern-backpack.jpg?camera_label=front"
               
-              addToCart(productName, productDesc, priceNumber);
+              addToCart(productName, productDesc, priceNumber, productImage);
               storeValue()
           });
       });
@@ -362,7 +364,7 @@
 
     // Add the new item if it's valid
     if (name && description && price !== undefined) {
-        storedItems.push({ name, description, price });
+        storedItems.push({ name, description, price, image});
     }
           
       localStorage.setItem('cartItems', JSON.stringify(storedItems));
@@ -370,7 +372,7 @@
 
   
   function addToCart(name, description, price) {
-      cartItems(name, description, price);
+      cartItems(name, description, price, image);
       if(`${name.length}` > 1 && `${description.length}` > 1){
         alert(`${name} added to cart!`);    
       }
