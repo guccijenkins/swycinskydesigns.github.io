@@ -212,18 +212,18 @@
   <h3 class="d-flex justify-content-center">Have questions? Submit your info in the text fields below.</h3>
   <br>
   <div class="d-flex justify-content-center">
-    <form class="justify-content-center">
+    <form class="justify-content-center" id="contact-form">
       <p><h3>Name</h3></p>
-      <input type="text" style="width: 300px;">
+      <input type="text" style="width: 300px;" name="from_name" required>
 
-      <p><h3>Email (optional)</h3></p>
-      <input type="text" style="width: 300px;">
+      <p><h3>Email</h3></p>
+      <input type="email" style="width: 300px;" name="from_email" placeholder="Your Email" required>
 
       <p><h3>Message</h3></p>
-      <textarea class="resizable" placeholder="Leave a comment here" style="height: auto; width: 300px; min-height: 100px;"></textarea>
+      <textarea class="resizable" placeholder="Leave a comment here" style="height: auto; width: 300px; min-height: 100px;" name="message" required></textarea>
       <br>
       <br>
-      <button class="w-100 btn btn-primary btn-lg justify-content-center">Submit</button>
+      <button class="w-100 btn btn-primary btn-lg justify-content-center" type="submit">Submit</button>
     </form>
   </div>
   <br>
@@ -265,6 +265,31 @@
 
   output.innerText = count
   }
+</script>
+
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script type="text/javascript">
+  (function() {
+    emailjs.init("6utlMZH-nzWmbEOUf"); 
+  
+  
+  document.getElementById('contact-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      emailjs.sendForm('service_ocegk6a', 'template_m8irlhk', this) 
+        .then(function(response) {
+
+          alert('Email sent successfully!');
+          window.location.replace("../Contact/index.html");
+          
+        }, function(error) {
+          
+          alert('Failed to send email. Please try again later.');
+        });
+    });
+  
+  })();
+
 </script>
 
   </body>
